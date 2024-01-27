@@ -1,4 +1,5 @@
-﻿using Ink.Runtime;
+﻿using Ink;
+using Ink.Runtime;
 using System.Linq;
 using UnityEngine;
 
@@ -13,6 +14,12 @@ public class Scene : MonoBehaviour {
 
 	void Awake() {
 		_story = new Story(_inkText.text);
+		_story.onError += (errorMessage, errorType) => {
+			if( errorType == ErrorType.Warning )
+				Debug.LogWarning(errorMessage);
+			else
+				Debug.LogError(errorMessage);
+		};
 	}
 
 	void Update() {
@@ -37,7 +44,7 @@ public class Scene : MonoBehaviour {
 	}
 
 	private static int ReadSelection() {
-		for( int i = 0; i <= 9; ++i ) {
+		for( int i = 1; i <= 9; ++i ) {
 			if( Input.GetKeyDown(KeyCode.Alpha0 + i) || Input.GetKeyDown(KeyCode.Keypad0 + i) ) {
 				return i;
 			}
@@ -55,6 +62,11 @@ public class Scene : MonoBehaviour {
 	private void OfferStoryOptions(PlayerInput input) {
 		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
+		}
+		else if( input.Selection > 0 ) {
+			_story.ChooseChoiceIndex(input.Selection - 1);
+			string dialogue = _story.Continue();
+			StartCoroutine(_dialogueView.Speak(dialogue));
 		}
 	}
 }

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
 public class DialogueView : MonoBehaviour {
-	private const float WAIT_S = 0.025f;
+	[SerializeField]
+	private float _wait_s = 0.025f;
 
 	[SerializeField]
 	private TMP_Text _txtDialogue;
@@ -13,6 +15,18 @@ public class DialogueView : MonoBehaviour {
 	private Coroutine _current;
 
 	private string _dialogue = "";
+
+	private readonly StringBuilder _stringBuilder = new StringBuilder();
+
+	private IList<string> _choices = new List<string>();
+
+	public IList<string> Choices {
+		get => new ReadOnlyCollection<string>(_choices);
+		set {
+			_choices = value;
+			_txtDialogue.text = EnumerateChoices(_choices);
+		}
+	}
 
 	public bool IsSpeaking { get; private set; }
 
@@ -28,13 +42,17 @@ public class DialogueView : MonoBehaviour {
 		IsSpeaking = false;
 	}
 
-	public void Offer(IEnumerable<string> choices) {
-
+	private string EnumerateChoices(IList<string> choices) {
+		_stringBuilder.Length = 0;
+		for( int i = 0; i < choices.Count; ++i ) {
+			_stringBuilder.Append(i + 1).Append(". ").Append(choices[i]).AppendLine();
+		}
+		return _stringBuilder.ToString();
 	}
 
 	private IEnumerator Show(string dialogue, int start) {
 		for( int i = start + 1; i <= dialogue.Length; ++i ) {
-			yield return new WaitForSeconds(WAIT_S);
+			yield return new WaitForSeconds(_wait_s);
 			_txtDialogue.text = dialogue[..i];
 		}
 	}

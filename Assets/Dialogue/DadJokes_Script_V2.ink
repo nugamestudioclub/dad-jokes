@@ -19,6 +19,7 @@ I hope I don't screw it up.
 * [Grab the teddy bear] -> bear
 * [Grab book] -> book
 * [Tickle her tummy] -> tummy 
+*	-> ending
  
 
 === mobile ===

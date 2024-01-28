@@ -233,8 +233,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+  m_sharedMaterial: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -339,6 +339,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inkText: {fileID: 4900000, guid: d6e7823d98b478a41ad97d10510fcf70, type: 3}
   _dialogueView: {fileID: 389198158}
+  _items:
+  - Turn on the mobile
+  - Look at the photo
+  - Grab the teddy bear
+  - Grab book
+  - Tickle her tummy
 --- !u!4 &1310819192
 Transform:
   m_ObjectHideFlags: 0

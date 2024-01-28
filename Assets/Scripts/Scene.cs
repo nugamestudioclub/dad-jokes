@@ -1,5 +1,6 @@
 ﻿using Ink;
 using Ink.Runtime;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class Scene : MonoBehaviour {
 
 	[SerializeField]
 	private DialogueView _dialogueView;
+
+	[SerializeField]
+	private List<string> _items = new();
 
 	private Story _story;
 
@@ -24,6 +28,9 @@ public class Scene : MonoBehaviour {
 
 	void Update() {
 		var input = ReadInput();
+		if( _dialogueView.IsSpeaking ) {
+			return;
+		}
 		if( _story.canContinue ) {
 			ContinueStory(input);
 		}
@@ -53,18 +60,28 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void ContinueStory(PlayerInput input) {
-		if( input.Interact && !_dialogueView.IsSpeaking ) {
+		if( input.Interact ) {
 			string dialogue = _story.Continue();
 			StartCoroutine(_dialogueView.Speak(dialogue));
 		}
 	}
 
+	private int FindChoiceIndex(int itemIndex) {
+		string item = _items[itemIndex];
+		var choices = _story.currentChoices.Select(x => x.text).ToList();
+		return choices.IndexOf(item);
+	}
+
 	private void OfferStoryOptions(PlayerInput input) {
-		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
+		if( _story.currentChoices.Count == 0 ) {
+			Debug.Log("END");
+		}
+		else if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
 		}
 		else if( input.Selection > 0 ) {
-			_story.ChooseChoiceIndex(input.Selection - 1);
+			int choiceIndex = FindChoiceIndex(input.Selection - 1);
+			_story.ChooseChoiceIndex(choiceIndex);
 			string dialogue = _story.Continue();
 			StartCoroutine(_dialogueView.Speak(dialogue));
 		}

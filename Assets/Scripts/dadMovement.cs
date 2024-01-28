@@ -66,7 +66,6 @@ public class dadMovement : MonoBehaviour
         //get key input
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
         //when to jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {

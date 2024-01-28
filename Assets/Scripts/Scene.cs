@@ -47,6 +47,11 @@ public class Scene : MonoBehaviour {
     }
 
 	void Update() {
+		if (Input.GetKeyDown(KeyCode.M))
+		{
+			TransitionManager.ToCredits();
+
+        }
 		var input = ReadInput();
 		if( _dialogueView.IsSpeaking ) {
 			return;

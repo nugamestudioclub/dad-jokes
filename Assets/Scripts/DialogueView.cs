@@ -34,7 +34,7 @@ public class DialogueView : MonoBehaviour {
 		get => new ReadOnlyCollection<string>(_choices);
 		set {
 			_choices = new List<string>(value);
-			_txtDialogue.text = EnumerateChoices(_choices);
+			_txtDialogue.text = ""; // EnumerateChoices(_choices);
 		}
 	}
 

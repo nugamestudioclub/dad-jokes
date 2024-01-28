@@ -12,6 +12,9 @@ public class DialogueView : MonoBehaviour {
 	[SerializeField]
 	private TMP_Text _txtDialogue;
 
+	[SerializeField]
+	private GameObject _parent;
+
 	private Coroutine _current;
 
 	private string _dialogue = "";
@@ -19,6 +22,13 @@ public class DialogueView : MonoBehaviour {
 	private readonly StringBuilder _stringBuilder = new();
 
 	private IList<string> _choices = new List<string>();
+
+	public bool Hidden {
+		get => _parent.activeSelf;
+		set {
+			_parent.SetActive(!value);
+		}
+	}
 
 	public IList<string> Choices {
 		get => new ReadOnlyCollection<string>(_choices);

@@ -518,6 +518,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_text
+      value: 'Brendan Brassil - Programming
+
+        Sebastian Kobori - Programming
+
+        Zoe
+        Nelson - Writing, 3D Modeling
+
+        Sam Vayens - Programming
+
+        Julianna
+        Volkov - Environment, Lighting
+
+        Max Wang - UI, Menu Design
+
+        Meet
+        Bhanushali - Background Art
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 8634000243156690657, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
       propertyPath: m_Name
       value: CreditScreen

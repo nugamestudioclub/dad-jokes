@@ -25,7 +25,7 @@ public class Scene : MonoBehaviour {
 
 	private Story _story;
 
-	private List<InteractableObject> _interactableObjects = new();
+	private readonly List<InteractableObject> _interactableObjects = new();
 
 	private SceneMode _mode;
 	public SceneMode Mode {
@@ -60,16 +60,23 @@ public class Scene : MonoBehaviour {
 	void Update() {
 		var input = ReadInput();
 		if( _dialogueView.IsSpeaking ) {
-			return;
+			if( _story.canContinue && input.Interact ) {
+				SkipStory();
+			}
 		}
-		if( _story.canContinue ) {
-			ContinueStory(input);
-		}
-		else if( _story.currentChoices.Count > 0 ) {
-			OfferStoryOptions(input);
-		}
-		else if( input.Interact ) {
-			TransitionManager.ToCredits();
+		else {
+			if( _story.canContinue ) {
+				ContinueStory(input);
+			}
+			else if( _dialogueView.IsSpeaking ) {
+				return;
+			}
+			else if( _story.currentChoices.Count > 0 ) {
+				OfferStoryOptions(input);
+			}
+			else if( input.Interact ) {
+				TransitionManager.ToCredits();
+			}
 		}
 	}
 
@@ -123,6 +130,10 @@ public class Scene : MonoBehaviour {
 			return;
 		string dialogue = _story.Continue();
 		StartCoroutine(_dialogueView.Speak(dialogue));
+	}
+
+	private void SkipStory() {
+		ContinueStory();
 	}
 
 	private int FindChoiceIndex(int itemIndex) {

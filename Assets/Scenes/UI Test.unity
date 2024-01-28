@@ -249,7 +249,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1531343474
 Canvas:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ Canvas:
   m_GameObject: {fileID: 1531343471}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 1947165101}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -281,8 +281,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531343471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5907582687107077231}
@@ -294,8 +294,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920.0001, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1947165099
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,17 +578,187 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 658446459349620670, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658446459349620670, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 1101249830410388122, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101249830410388122, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 1963779817324585681, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963779817324585681, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 3467570125176135467, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -832.93335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559853477279081110, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765172986513403376, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -832.93335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765172986513403376, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -385.96915
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295546666994718055, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -832.93335
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752633134300566637, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -832.93335
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752633134300566637, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -68.49454
+      objectReference: {fileID: 0}
     - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
       propertyPath: m_text
-      value: Julianna Volkov - Environment, Lighting
+      value: 'Brendan Brassil - Programming
+
+        Sebastian Kobori - Programming
+
+        Zoe
+        Nelson - Writing, 3D Modelling, Animation
+
+        Sam Vayens - Programming
+
+        Julianna
+        Volkov - Environment, Lighting
+
+        Max Wang - Game Design
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_margin.z
+      value: 9.295746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759471261427791841, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883907622781651366, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883907622781651366, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 6370081584633939795, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370081584633939795, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 6380298889379659600, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -832.93335
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380298889379659600, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -169.48642
       objectReference: {fileID: 0}
     - target: {fileID: 7471995764908580839, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
       propertyPath: m_text
-      value: Zoe Nelson - Writing, 3D Modelling, Animation
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7471995764908580839, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
       propertyPath: m_margin.z
       value: -283.39188
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471995764908580839, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 7616624097290024159, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3050651956629194677, guid: a3a7bbbaeaee5af4b8bbdc856fa6e596, type: 2}
+    - target: {fileID: 7874713583933368827, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_Name
+      value: People
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531864290625188364, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -832.93335
       objectReference: {fileID: 0}
     - target: {fileID: 8634000243156690657, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
       propertyPath: m_Name
@@ -599,7 +769,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8972554574672934435, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+    - {fileID: 8336626227068777143, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+    - {fileID: 543483708582729546, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+    - {fileID: 6783047950086724191, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+    - {fileID: 9066795716914477313, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
+    - {fileID: 7085893384516673818, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca88db27334b68d4fb30571208bda6f3, type: 3}
@@ -694,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1776653161456414282, guid: bba8d114e9a104544a4e2031bfb4179d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -435.89
+      value: -435.89005
       objectReference: {fileID: 0}
     - target: {fileID: 1776653161456414282, guid: bba8d114e9a104544a4e2031bfb4179d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -941,6 +1117,10 @@ PrefabInstance:
     - target: {fileID: 2879900277144393763, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_Name
       value: Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879900277144393763, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

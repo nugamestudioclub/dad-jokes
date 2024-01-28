@@ -73,7 +73,10 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void OfferStoryOptions(PlayerInput input) {
-		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
+		if( _story.currentChoices.Count == 0 ) {
+			Debug.Log("END");
+		}
+		else if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
 		}
 		else if( input.Selection > 0 ) {

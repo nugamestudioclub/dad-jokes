@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_AnchorMax.x
@@ -161,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_AnchorMin.x
@@ -169,15 +169,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1805.8
+      value: 1840
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 213.7
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,11 +209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.8199387
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -391.28003
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2400757494807094488, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -230,10 +230,6 @@ PrefabInstance:
     - target: {fileID: 2879900277144393763, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
       propertyPath: m_Name
       value: Dialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984599013978100899, guid: 9239dee7ad0cea148b7ba0c443991530, type: 3}
-      propertyPath: m_text
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

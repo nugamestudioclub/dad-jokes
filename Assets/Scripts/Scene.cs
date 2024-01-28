@@ -16,6 +16,8 @@ public class Scene : MonoBehaviour {
 
 	private Story _story;
 
+	private List<pickUpScript> _pickUpObjects = new();
+
 	void Awake() {
 		_story = new Story(_inkText.text);
 		_story.onError += (errorMessage, errorType) => {
@@ -24,6 +26,12 @@ public class Scene : MonoBehaviour {
 			else
 				Debug.LogError(errorMessage);
 		};
+	}
+
+	void Start() {
+		foreach( var obj in GameObject.FindGameObjectsWithTag("canPickUp") ) {
+			_pickUpObjects.Add(obj.GetComponent<pickUpScript>());
+		}
 	}
 
 	void Update() {
@@ -42,7 +50,7 @@ public class Scene : MonoBehaviour {
 		}
 	}
 
-	private static PlayerInput ReadInput() {
+	private PlayerInput ReadInput() {
 		return new PlayerInput {
 			Interact = ReadInteract(),
 			Selection = ReadSelection()
@@ -53,13 +61,23 @@ public class Scene : MonoBehaviour {
 		return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
 	}
 
-	private static int ReadSelection() {
+	private int ReadSelection() {
+		for( int i = 0; i < _pickUpObjects.Count; ++i ) {
+			var pickUpObject = _pickUpObjects[i];
+			if( pickUpObject.HasInteraction ) {
+				pickUpObject.HasInteraction = false;
+				return i;
+			}
+		}
+		return -1;
+		/*
 		for( int i = 1; i <= 9; ++i ) {
 			if( Input.GetKeyDown(KeyCode.Alpha0 + i) || Input.GetKeyDown(KeyCode.Keypad0 + i) ) {
 				return i;
 			}
 		}
 		return -1;
+		*/
 	}
 
 	private void ContinueStory(PlayerInput input) {

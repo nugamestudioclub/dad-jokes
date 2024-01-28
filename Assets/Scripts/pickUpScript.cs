@@ -10,11 +10,17 @@ public class pickUpScript : MonoBehaviour
 
     public float throwForce = 500f; //force at which the object is thrown at
     public float pickUpRange = 5f; //how far the dad can pickup the object from
+
     private float rotationSensitivity = 1f; //how fast/slow the object is rotated in relation to mouse movement
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
+
+	public bool HasInteraction { get; set; }
+
+	[field: SerializeField]
+    public int Id { get; private set; }
 
     //Reference to script which includes mouse movement of dad (looking around)
     //we want to disable the dad looking around when rotating the object
@@ -76,6 +82,7 @@ public class pickUpScript : MonoBehaviour
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with dad, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), dad.GetComponent<Collider>(), true);
+            HasInteraction = true;
         }
     }
     void DropObject()

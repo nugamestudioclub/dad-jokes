@@ -16,7 +16,7 @@ public class pickUpScript : MonoBehaviour
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private GameObject lookedAtObj; //object being looked at
-    private Material outlineMaterial; //looked at object Material
+    public Material outlineMaterial; //looked at object Material
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
@@ -29,7 +29,7 @@ public class pickUpScript : MonoBehaviour
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
 
-        outlineMaterial = Resources.Load("/dad-jokes/Assets/Art/Shader Graphs_outline.mat", typeof(Material))as Material;
+        //outlineMaterial = Resources.Load("/dad-jokes/Assets/Art/Shader Graphs_outline.mat", typeof(Material))as Material;
 
         //mouseLookScript = dad.GetComponent<MouseLookScript>();
     }

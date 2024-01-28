@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class pickUpScript : MonoBehaviour
@@ -14,6 +15,8 @@ public class pickUpScript : MonoBehaviour
     private float rotationSensitivity = 1f; //how fast/slow the object is rotated in relation to mouse movement
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
+    private GameObject lookedAtObj; //object being looked at
+    private Material outlineMaterial; //looked at object Material
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
@@ -26,16 +29,28 @@ public class pickUpScript : MonoBehaviour
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
 
+        outlineMaterial = Resources.Load("/dad-jokes/Assets/Art/Shader Graphs_outline.mat", typeof(Material))as Material;
+
         //mouseLookScript = dad.GetComponent<MouseLookScript>();
     }
     void Update()
     {
+        //make interactable item glow
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+            {
+                if(hit.transform.gameObject.tag == "canPickUp")
+                {
+                    ObjectOutline(hit.transform.gameObject);
+                }
+            }
+
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
             if (heldObj == null) //if currently not holding anything
             {
                 //perform raycast to check if dad is looking at object within pickuprange
-                RaycastHit hit;
+                
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
                     //make sure pickup tag is attached
@@ -151,5 +166,13 @@ public class pickUpScript : MonoBehaviour
             heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above dad 
             //if your dad is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
         }
+    }
+
+    void ObjectOutline(GameObject objectToAddOutlineMaterial)
+    {
+        //get object and add outline material
+        lookedAtObj = objectToAddOutlineMaterial;
+        lookedAtObj.GetComponent<MeshRenderer>().material = outlineMaterial;
+        
     }
 }

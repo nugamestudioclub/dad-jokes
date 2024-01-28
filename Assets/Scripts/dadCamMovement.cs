@@ -5,19 +5,29 @@ using UnityEngine;
 public class dadMovementScript : MonoBehaviour
 {
 
+   
     public float sensX;
     public float sensY;
 
     public Transform orientation;
 
-    float xRotation;
-    float yRotation;
+    float xRotation = 0;
+    float yRotation = 0;
+
+    private Vector3 babyPos;
+
+    private bool aKeyHasBeenPressed = false;
     
     // Start is called before the first frame update
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        GetBabyPos();
+        transform.LookAt(babyPos);
+
+
     }
 
     // Update is called once per frame
@@ -33,7 +43,22 @@ public class dadMovementScript : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         //rotate cam and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        if(Input.anyKey)
+        {
+            aKeyHasBeenPressed = true;
+        }
+        if(aKeyHasBeenPressed)
+        {
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
+    }
+
+    private void GetBabyPos()
+    {
+    GameObject baby = GameObject.Find("BabySwaddle");
+    Transform babyTransform = baby.transform;
+    //get baby pos
+    babyPos = babyTransform.position;
     }
 }

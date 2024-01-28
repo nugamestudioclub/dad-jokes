@@ -17,10 +17,6 @@ public class pickUpScript : MonoBehaviour
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
-	public bool HasInteraction { get; set; }
-
-	[field: SerializeField]
-    public int Id { get; private set; }
 
     //Reference to script which includes mouse movement of dad (looking around)
     //we want to disable the dad looking around when rotating the object
@@ -73,8 +69,11 @@ public class pickUpScript : MonoBehaviour
     }
     void PickUpObject(GameObject pickUpObj)
     {
+
         if (pickUpObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
         {
+            Debug.Log($"picking up {pickUpObj.name}");
+
             heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
             heldObjRb.isKinematic = true;
@@ -82,7 +81,12 @@ public class pickUpScript : MonoBehaviour
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with dad, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), dad.GetComponent<Collider>(), true);
-            HasInteraction = true;
+            var interactable = pickUpObj.GetComponent<InteractableObject>();
+            if (interactable != null && interactable.CanInteract)
+            {
+                Debug.Log($"interacting with {pickUpObj.name}");
+                interactable.HasInteraction = true;
+            }
         }
     }
     void DropObject()

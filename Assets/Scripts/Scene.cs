@@ -16,7 +16,15 @@ public class Scene : MonoBehaviour {
 
 	private Story _story;
 
-	private List<pickUpScript> _pickUpObjects = new();
+	private List<InteractableObject> _interactableObjects = new();
+
+	private SceneMode _mode;
+	public SceneMode Mode { get=> _mode; private set
+		{
+			_dialogueView.Hidden = value != SceneMode.Dialogue;
+            _mode = value;
+		}
+	}
 
 	void Awake() {
 		_story = new Story(_inkText.text);
@@ -30,9 +38,13 @@ public class Scene : MonoBehaviour {
 
 	void Start() {
 		foreach( var obj in GameObject.FindGameObjectsWithTag("canPickUp") ) {
-			_pickUpObjects.Add(obj.GetComponent<pickUpScript>());
+			_interactableObjects.Add(obj.GetComponent<InteractableObject>());
 		}
-	}
+
+		Mode = SceneMode.Dialogue;
+
+        ContinueStory();
+    }
 
 	void Update() {
 		var input = ReadInput();
@@ -43,6 +55,7 @@ public class Scene : MonoBehaviour {
 			ContinueStory(input);
 		}
 		else if( _story.currentChoices.Count > 0 ) {
+			Mode = SceneMode.Default;
 			OfferStoryOptions(input);
 		}
 		else {
@@ -62,11 +75,17 @@ public class Scene : MonoBehaviour {
 	}
 
 	private int ReadSelection() {
-		for( int i = 0; i < _pickUpObjects.Count; ++i ) {
-			var pickUpObject = _pickUpObjects[i];
-			if( pickUpObject.HasInteraction ) {
-				pickUpObject.HasInteraction = false;
-				return i;
+		Debug.Log($"num objects {_interactableObjects.Count}");
+		if (Mode == SceneMode.Dialogue) {
+			return -1;
+		}
+		for( int i = 0; i < _interactableObjects.Count; ++i ) {
+			var interactable = _interactableObjects[i];
+			if( interactable.HasInteraction ) {
+				interactable.HasInteraction = false;
+				interactable.CanInteract = false;
+                Debug.Log($"current object id {interactable.Id}");
+                return interactable.Id;
 			}
 		}
 		return -1;
@@ -80,11 +99,11 @@ public class Scene : MonoBehaviour {
 		*/
 	}
 
-	private void ContinueStory(PlayerInput input) {
-		if( input.Interact ) {
-			string dialogue = _story.Continue();
-			StartCoroutine(_dialogueView.Speak(dialogue));
-		}
+	private void ContinueStory(PlayerInput? input = null) {
+		if (input != null && !input.Value.Interact)
+			return;
+		string dialogue = _story.Continue();
+		StartCoroutine(_dialogueView.Speak(dialogue));
 	}
 
 	private int FindChoiceIndex(int itemIndex) {
@@ -94,14 +113,16 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void OfferStoryOptions(PlayerInput input) {
+
 		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
 		}
-		else if( input.Selection > 0 ) {
-			int choiceIndex = FindChoiceIndex(input.Selection - 1);
+		else if( input.Selection >= 0 ) {
+			int choiceIndex = FindChoiceIndex(input.Selection);
 			_story.ChooseChoiceIndex(choiceIndex);
 			string dialogue = _story.Continue();
-			StartCoroutine(_dialogueView.Speak(dialogue));
+            Mode = SceneMode.Dialogue;
+            StartCoroutine(_dialogueView.Speak(dialogue));
 		}
 	}
 }

@@ -52,3 +52,5 @@ MonoBehaviour:
   - Grab the teddy bear
   - Grab book
   - Tickle her tummy
+  _sfxAudioSource: {fileID: 0}
+  _soundset: {fileID: 11400000, guid: bb559694f02f69a48842099efad772e6, type: 2}

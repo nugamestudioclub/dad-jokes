@@ -442,6 +442,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1469323501792871359, guid: c8acd4dd29b178044a62f383a514f2ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 106069545ac22a949aa148f5345b8c74, type: 3}
+    - target: {fileID: 1469323501792871359, guid: c8acd4dd29b178044a62f383a514f2ed, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469323501792871359, guid: c8acd4dd29b178044a62f383a514f2ed, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469323501792871359, guid: c8acd4dd29b178044a62f383a514f2ed, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5370841957533723523, guid: c8acd4dd29b178044a62f383a514f2ed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

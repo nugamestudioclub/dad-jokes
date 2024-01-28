@@ -66,7 +66,6 @@ public class dadMovement : MonoBehaviour
         //get key input
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
         //when to jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
@@ -86,9 +85,9 @@ public class dadMovement : MonoBehaviour
         //on ground
         if(grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        //in air
-        else if(!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        //in air, taken out so dad does not change direction while in the air
+        //else if(!grounded)
+        //    rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
 
     private void SpeedControl()

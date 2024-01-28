@@ -54,7 +54,6 @@ public class Scene : MonoBehaviour {
 			ContinueStory(input);
 		}
 		else if( _story.currentChoices.Count > 0 ) {
-			Mode = SceneMode.Default;
 			OfferStoryOptions(input);
 		}
 		else {
@@ -74,7 +73,7 @@ public class Scene : MonoBehaviour {
 	}
 
 	private int ReadSelection() {
-		Debug.Log($"num objects {_interactableObjects.Count}");
+		//Debug.Log($"num objects {_interactableObjects.Count}");
 		if (Mode == SceneMode.Dialogue) {
 			return -1;
 		}
@@ -112,8 +111,8 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void OfferStoryOptions(PlayerInput input) {
-
 		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
+			Mode = SceneMode.Default;
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
 		}
 		else if( input.Selection >= 0 ) {

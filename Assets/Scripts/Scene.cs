@@ -47,11 +47,6 @@ public class Scene : MonoBehaviour {
     }
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.M))
-		{
-			TransitionManager.ToCredits();
-
-        }
 		var input = ReadInput();
 		if( _dialogueView.IsSpeaking ) {
 			return;
@@ -63,8 +58,8 @@ public class Scene : MonoBehaviour {
 			OfferStoryOptions(input);
 		}
 		else if( input.Interact ){
-			SceneManager.LoadScene("Credits");
-		}
+            TransitionManager.ToCredits();
+        }
 	}
 
 	private PlayerInput ReadInput() {

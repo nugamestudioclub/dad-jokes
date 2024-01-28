@@ -3,6 +3,7 @@ using Ink.Runtime;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scene : MonoBehaviour {
 	[SerializeField]
@@ -37,12 +38,11 @@ public class Scene : MonoBehaviour {
 	}
 
 	void Start() {
-		foreach( var obj in GameObject.FindGameObjectsWithTag("canPickUp") ) {
+		foreach( var obj in GameObject.FindGameObjectsWithTag("canInteract")
+			.Concat(GameObject.FindGameObjectsWithTag("canPickUp")) ) { 
 			_interactableObjects.Add(obj.GetComponent<InteractableObject>());
 		}
-
 		Mode = SceneMode.Dialogue;
-
         ContinueStory();
     }
 
@@ -55,12 +55,11 @@ public class Scene : MonoBehaviour {
 			ContinueStory(input);
 		}
 		else if( _story.currentChoices.Count > 0 ) {
-			Mode = SceneMode.Default;
 			OfferStoryOptions(input);
 		}
-		else {
-			Debug.Log("END");
-		}
+		else if( input.Interact ){
+            TransitionManager.ToCredits();
+        }
 	}
 
 	private PlayerInput ReadInput() {
@@ -75,7 +74,7 @@ public class Scene : MonoBehaviour {
 	}
 
 	private int ReadSelection() {
-		Debug.Log($"num objects {_interactableObjects.Count}");
+		//Debug.Log($"num objects {_interactableObjects.Count}");
 		if (Mode == SceneMode.Dialogue) {
 			return -1;
 		}
@@ -113,8 +112,8 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void OfferStoryOptions(PlayerInput input) {
-
 		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
+			Mode = SceneMode.Default;
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
 		}
 		else if( input.Selection >= 0 ) {

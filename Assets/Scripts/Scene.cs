@@ -15,15 +15,24 @@ public class Scene : MonoBehaviour {
 	[SerializeField]
 	private List<string> _items = new();
 
+	[SerializeField]
+	private AudioSource _sfxAudioSource;
+
+	[SerializeField]
+	private Soundset _soundset;
+
+	private readonly Dictionary<string, AudioClip> _sounds = new();
+
 	private Story _story;
 
-	private List<InteractableObject> _interactableObjects = new();
+	private readonly List<InteractableObject> _interactableObjects = new();
 
 	private SceneMode _mode;
-	public SceneMode Mode { get=> _mode; private set
-		{
+	public SceneMode Mode {
+		get => _mode;
+		private set {
 			_dialogueView.Hidden = value != SceneMode.Dialogue;
-            _mode = value;
+			_mode = value;
 		}
 	}
 
@@ -35,31 +44,49 @@ public class Scene : MonoBehaviour {
 			else
 				Debug.LogError(errorMessage);
 		};
+		InitializeSounds();
+		_story.BindExternalFunction("playSfx", (string name) => { PlaySfx(name); });
 	}
 
 	void Start() {
 		foreach( var obj in GameObject.FindGameObjectsWithTag("canInteract")
-			.Concat(GameObject.FindGameObjectsWithTag("canPickUp")) ) { 
+			.Concat(GameObject.FindGameObjectsWithTag("canPickUp")) ) {
 			_interactableObjects.Add(obj.GetComponent<InteractableObject>());
 		}
 		Mode = SceneMode.Dialogue;
-        ContinueStory();
-    }
+		ContinueStory();
+	}
 
 	void Update() {
 		var input = ReadInput();
 		if( _dialogueView.IsSpeaking ) {
-			return;
+			if( _story.canContinue && input.Interact ) {
+				SkipStory();
+			}
 		}
-		if( _story.canContinue ) {
-			ContinueStory(input);
+		else {
+			if( _story.canContinue ) {
+				ContinueStory(input);
+			}
+			else if( _dialogueView.IsSpeaking ) {
+				return;
+			}
+			else if( _story.currentChoices.Count > 0 ) {
+				OfferStoryOptions(input);
+			}
+			else if( input.Interact ) {
+				TransitionManager.ToCredits();
+			}
 		}
-		else if( _story.currentChoices.Count > 0 ) {
-			OfferStoryOptions(input);
-		}
-		else if( input.Interact ){
-            TransitionManager.ToCredits();
-        }
+	}
+
+	private void InitializeSounds() {
+		_sounds[_soundset.BabyNoise1.Name] = _soundset.BabyNoise1.AudioClip;
+		_sounds[_soundset.BabyNoise2.Name] = _soundset.BabyNoise2.AudioClip;
+		_sounds[_soundset.BabyNoise3.Name] = _soundset.BabyNoise3.AudioClip;
+		_sounds[_soundset.BabyNoise4.Name] = _soundset.BabyNoise4.AudioClip;
+		_sounds[_soundset.BabyLaugh1.Name] = _soundset.BabyLaugh1.AudioClip;
+		_sounds[_soundset.BabyLaugh2.Name] = _soundset.BabyLaugh2.AudioClip;
 	}
 
 	private PlayerInput ReadInput() {
@@ -75,7 +102,7 @@ public class Scene : MonoBehaviour {
 
 	private int ReadSelection() {
 		//Debug.Log($"num objects {_interactableObjects.Count}");
-		if (Mode == SceneMode.Dialogue) {
+		if( Mode == SceneMode.Dialogue ) {
 			return -1;
 		}
 		for( int i = 0; i < _interactableObjects.Count; ++i ) {
@@ -83,8 +110,8 @@ public class Scene : MonoBehaviour {
 			if( interactable.HasInteraction ) {
 				interactable.HasInteraction = false;
 				interactable.CanInteract = false;
-                Debug.Log($"current object id {interactable.Id}");
-                return interactable.Id;
+				Debug.Log($"current object id {interactable.Id}");
+				return interactable.Id;
 			}
 		}
 		return -1;
@@ -99,10 +126,14 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void ContinueStory(PlayerInput? input = null) {
-		if (input != null && !input.Value.Interact)
+		if( input != null && !input.Value.Interact )
 			return;
 		string dialogue = _story.Continue();
 		StartCoroutine(_dialogueView.Speak(dialogue));
+	}
+
+	private void SkipStory() {
+		ContinueStory();
 	}
 
 	private int FindChoiceIndex(int itemIndex) {
@@ -120,8 +151,13 @@ public class Scene : MonoBehaviour {
 			int choiceIndex = FindChoiceIndex(input.Selection);
 			_story.ChooseChoiceIndex(choiceIndex);
 			string dialogue = _story.Continue();
-            Mode = SceneMode.Dialogue;
-            StartCoroutine(_dialogueView.Speak(dialogue));
+			Mode = SceneMode.Dialogue;
+			StartCoroutine(_dialogueView.Speak(dialogue));
 		}
+	}
+
+	private void PlaySfx(string name) {
+		Debug.Log($"{nameof(PlaySfx)}(name: {name}");
+		_sfxAudioSource.PlayOneShot(_sounds[name]);
 	}
 }

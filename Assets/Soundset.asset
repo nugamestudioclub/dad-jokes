@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2868ee030bcd58a40800a5a230cba2b1, type: 3}
+  m_Name: Soundset
+  m_EditorClassIdentifier: 
+  BabyNoise1:
+    <Name>k__BackingField: baby_noise1
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 47d75378ee2a24c4a9045832ffe9460b, type: 3}
+  BabyNoise2:
+    <Name>k__BackingField: baby_noise2
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: c4d7a6b241a8006458f4d5922eb8cb4b, type: 3}
+  BabyNoise3:
+    <Name>k__BackingField: baby_noise3
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: d7f0411722949d3439ebb6052cf57c4e, type: 3}
+  BabyNoise4:
+    <Name>k__BackingField: baby_noise4
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 9e2ee111c74991943a3b99f19b5ea8bf, type: 3}
+  BabyLaugh1:
+    <Name>k__BackingField: baby_laugh1
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 43bfbfa31585a4645aaa0b00662a590f, type: 3}
+  BabyLaugh2:
+    <Name>k__BackingField: baby_laugh2
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 14b4215e064804b4197bdddf52d90c5a, type: 3}

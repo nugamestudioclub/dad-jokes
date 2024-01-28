@@ -85,16 +85,16 @@ Not even a pity laugh?
 
 
  === tummy ===
-Are we ticklish? Can you giggle for daddy? 
-~ playSfx("baby_noise1")
+Are we ticklish? Can you giggle for daddy?
+~ playSfx("baby_noise1") 
 [baby noise]
 No? My sweet angel, you have already taught me so much about patience, resilience, and the kind of unconditional love I never knew existed. From the moment I held you in my arms for the first time, so much love rushed in, but so did a wave of uncertainty. 
 Thoughts raced through me — Am I going to be a good dad? Will I be able to protect you from the challenges life throws our way? Can I live up to the incredible responsibility of being a person you look up to?
-~ playSfx("baby_noise2")
+~ playSfx("baby_noise4")
 [baby noise]
 Then you wrap your tiny fingers around mine, and that pure joy and connection brings me back to Earth. It's almost as if you're reminding me that neither of us are doing this alone. We're in this thing together.
-Can wtoue have a little smile now? 
-~ playSfx("baby_noise4")
+Can we have a little smile now? 
+~ playSfx("baby_noise2")
 [baby noise]
 No?
 Alright let's see what I've got.

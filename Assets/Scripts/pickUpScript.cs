@@ -16,6 +16,8 @@ public class pickUpScript : MonoBehaviour {
 	private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
 	private int LayerNumber; //layer index
 
+	private InteractableObject _heldInteractableObject;
+
 
 	//Reference to script which includes mouse movement of dad (looking around)
 	//we want to disable the dad looking around when rotating the object
@@ -39,10 +41,16 @@ public class pickUpScript : MonoBehaviour {
 					if( obj.CompareTag("canPickUp") ) {
 						//pass in object hit into the PickUpObject function
 						PickUpObject(obj);
-						InteractWithObject(obj);
+						_heldInteractableObject = obj.GetComponent<InteractableObject>();
 					}
 					else if( obj.CompareTag("canInteract") ) {
 						InteractWithObject(obj);
+					}
+					else if( obj.CompareTag("crib") ) {
+						if( _heldInteractableObject != null ) {
+							InteractWithObject(_heldInteractableObject.gameObject);
+							_heldInteractableObject = null;
+						}
 					}
 				}
 			}

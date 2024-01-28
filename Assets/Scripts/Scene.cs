@@ -37,12 +37,11 @@ public class Scene : MonoBehaviour {
 	}
 
 	void Start() {
-		foreach( var obj in GameObject.FindGameObjectsWithTag("canPickUp") ) {
+		foreach( var obj in GameObject.FindGameObjectsWithTag("canInteract")
+			.Concat(GameObject.FindGameObjectsWithTag("canPickUp")) ) { 
 			_interactableObjects.Add(obj.GetComponent<InteractableObject>());
 		}
-
 		Mode = SceneMode.Dialogue;
-
         ContinueStory();
     }
 

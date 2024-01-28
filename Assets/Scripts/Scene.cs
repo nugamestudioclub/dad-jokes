@@ -3,6 +3,7 @@ using Ink.Runtime;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scene : MonoBehaviour {
 	[SerializeField]
@@ -56,8 +57,8 @@ public class Scene : MonoBehaviour {
 		else if( _story.currentChoices.Count > 0 ) {
 			OfferStoryOptions(input);
 		}
-		else {
-			Debug.Log("END");
+		else if( input.Interact ){
+			SceneManager.LoadScene("Credits");
 		}
 	}
 

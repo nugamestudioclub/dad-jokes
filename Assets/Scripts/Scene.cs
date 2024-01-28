@@ -28,6 +28,9 @@ public class Scene : MonoBehaviour {
 
 	void Update() {
 		var input = ReadInput();
+		if( _dialogueView.IsSpeaking ) {
+			return;
+		}
 		if( _story.canContinue ) {
 			ContinueStory(input);
 		}
@@ -57,7 +60,7 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void ContinueStory(PlayerInput input) {
-		if( input.Interact && !_dialogueView.IsSpeaking ) {
+		if( input.Interact ) {
 			string dialogue = _story.Continue();
 			StartCoroutine(_dialogueView.Speak(dialogue));
 		}

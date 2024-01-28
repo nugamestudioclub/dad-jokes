@@ -16,7 +16,7 @@ public class DialogueView : MonoBehaviour {
 
 	private string _dialogue = "";
 
-	private readonly StringBuilder _stringBuilder = new StringBuilder();
+	private readonly StringBuilder _stringBuilder = new();
 
 	private IList<string> _choices = new List<string>();
 
@@ -50,10 +50,15 @@ public class DialogueView : MonoBehaviour {
 		return _stringBuilder.ToString();
 	}
 
-	private IEnumerator Show(string dialogue, int start) {
-		for( int i = start + 1; i <= dialogue.Length; ++i ) {
+	private IEnumerator Show(int start) {
+		for( int i = start + 1; i <= _dialogue.Length; ++i ) {
 			yield return new WaitForSeconds(_wait_s);
-			_txtDialogue.text = dialogue[..i];
+			_stringBuilder.Length = 0;
+			_stringBuilder
+				.Append(_dialogue[..i])
+				.Append("<color=#00000000>")
+				.Append(_dialogue[i..]);
+			_txtDialogue.text = _stringBuilder.ToString();
 		}
 	}
 
@@ -61,11 +66,19 @@ public class DialogueView : MonoBehaviour {
 		if( _current != null )
 			StopCoroutine(_current);
 		int start = 0;
+		if( dialogue.EndsWith('\n') )
+			dialogue = dialogue[..^1];
 		if( resume ) {
 			start = _dialogue.Length + 1;
-			dialogue = _dialogue + "\n" + dialogue;
+			_stringBuilder.Length = 0;
+			_stringBuilder
+				.Append(_dialogue).AppendLine()
+				.Append(dialogue);
+			_dialogue = _stringBuilder.ToString();
 		}
-		_dialogue = dialogue;
-		return _current = StartCoroutine(Show(dialogue, start));
+		else {
+			_dialogue = dialogue;
+		}
+		return _current = StartCoroutine(Show(start));
 	}
 }

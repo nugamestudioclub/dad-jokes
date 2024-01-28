@@ -34,8 +34,11 @@ public class Scene : MonoBehaviour {
 		if( _story.canContinue ) {
 			ContinueStory(input);
 		}
-		else if( !_dialogueView.IsSpeaking ) {
+		else if( _story.currentChoices.Count > 0 ) {
 			OfferStoryOptions(input);
+		}
+		else {
+			Debug.Log("END");
 		}
 	}
 
@@ -73,10 +76,7 @@ public class Scene : MonoBehaviour {
 	}
 
 	private void OfferStoryOptions(PlayerInput input) {
-		if( _story.currentChoices.Count == 0 ) {
-			Debug.Log("END");
-		}
-		else if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
+		if( _dialogueView.Choices.Count != _story.currentChoices.Count && input.Interact ) {
 			_dialogueView.Choices = _story.currentChoices.Select(x => x.text).ToList();
 		}
 		else if( input.Selection > 0 ) {

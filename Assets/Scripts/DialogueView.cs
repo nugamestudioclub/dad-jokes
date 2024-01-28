@@ -23,7 +23,7 @@ public class DialogueView : MonoBehaviour {
 	public IList<string> Choices {
 		get => new ReadOnlyCollection<string>(_choices);
 		set {
-			_choices = value;
+			_choices = new List<string>(value);
 			_txtDialogue.text = EnumerateChoices(_choices);
 		}
 	}

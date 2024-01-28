@@ -339,6 +339,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inkText: {fileID: 4900000, guid: d6e7823d98b478a41ad97d10510fcf70, type: 3}
   _dialogueView: {fileID: 389198158}
+  _items:
+  - Turn on the mobile
+  - Look at the photo
+  - Grab the teddy bear
+  - Grab book
+  - Tickle her tummy
 --- !u!4 &1310819192
 Transform:
   m_ObjectHideFlags: 0

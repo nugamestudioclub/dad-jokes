@@ -40,7 +40,7 @@ Tough crowd. If you want to be a critic I'll support that too.
 
 
 === photo ===
-Your mom has been cool as a cucumber. Much cooler than me. You are lucky you are to have her as your mom. Your mom just has this incredible strength that I admire every single day. And you should see the way her face lights up when she holds you. It's pure, unfiltered joy. 
+Your mom has been cool as a cucumber. Much cooler than me. You are lucky to have her as your mom. Your mom just has this incredible strength that I admire every single day. And you should see the way her face lights up when she holds you. It's pure, unfiltered joy. 
 You know that lullaby she sings to you every night? That's just one of the countless ways she shows her love. 
 Did you hear her music while you were in her belly? She sang to you every night, letting her guitar rest on her belly so you'd be able to feel the vibrations.
 ~ playSfx("baby_noise3")
@@ -108,14 +108,14 @@ Don't tell your mother.
 
 
 === ending ===
-You know... you are going to grow into your own person. That's pretty incredible. If I want you to grow to be patient, forgiving and kind, to be abole to fully express you feelings, I need to be doing the same. I can't teach you anything that I don't know myself.
-I certianly hope to teach you my incredible sense of humor. 
+You know... you are going to grow into your own person. That's pretty incredible. If I want you to grow to be patient, forgiving and kind, to be able to fully express you feelings, I need to be doing the same. I can't teach you anything that I don't know myself.
+I certainly hope to teach you my incredible sense of humor. 
 ~ playSfx("baby_laugh1")
 [baby laugh]
 Did you just laugh? Did you just laugh at daddy?? 
 Oh my gosh. You're a real, tiny human. You're a blank canvas just beginning to be painted with the hues of life. 
 I'm a dad.
-That still feels so surreal to say. My purpose was not just to provide and protect, but also to nurture. I will always make sure you're happy, that you're laghing. Even if it's not at my jokes.
+That still feels so surreal to say. My purpose was not just to provide and protect, but also to nurture. I will always make sure you're happy, that you're laughing. Even if it's not at my jokes.
 
 I think I'm up to the task.
     -> END

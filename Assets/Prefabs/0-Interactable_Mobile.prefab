@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 5756885697492414816}
   - component: {fileID: 8818952583821304536}
   - component: {fileID: 1921067978882938850}
+  - component: {fileID: 2861563754094428094}
   m_Layer: 0
   m_Name: 0-Interactable_Mobile
   m_TagString: canInteract
@@ -578,6 +579,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 0
+--- !u!33 &2861563754094428094
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360375095420186296}
+  m_Mesh: {fileID: -8114220643760683568, guid: 0633f76b0e1d7c14a9d3df0ee32be688, type: 3}
 --- !u!1 &2860068393023107664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1647,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: -7493077824849576667, guid: 4c9809dac73c3f1478316d5f5b136a01, type: 3}
   - {fileID: -7493077824849576667, guid: 4c9809dac73c3f1478316d5f5b136a01, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0

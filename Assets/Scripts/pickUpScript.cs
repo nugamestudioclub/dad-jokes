@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class pickUpScript : MonoBehaviour {
@@ -15,7 +16,9 @@ public class pickUpScript : MonoBehaviour {
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private GameObject lookedAtObj; //object being looked at
-    public Material outlineMaterial; //looked at object Material
+    public Material outlineMaterial; //outline Material
+    private Material lookedAtObjMaterial; //looked at object material
+	private bool hitting = false;
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
@@ -40,10 +43,19 @@ public class pickUpScript : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
             {
-                if(hit.transform.gameObject.tag == "canPickUp")
+                
+                if(hit.transform.gameObject.tag == "canPickUp" && hitting == false)
                 {
+					hitting = true;
                     ObjectOutline(hit.transform.gameObject);
                 }
+
+                if(hit.transform.gameObject != lookedAtObj && hitting == true) 
+                {
+					hitting = false;
+                    RemoveObjectOutline(lookedAtObj);
+                }
+
             }
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
@@ -179,7 +191,13 @@ public class pickUpScript : MonoBehaviour {
     {
         //get object and add outline material
         lookedAtObj = objectToAddOutlineMaterial;
-        lookedAtObj.GetComponent<MeshRenderer>().material = outlineMaterial;
+		lookedAtObjMaterial = lookedAtObj.GetComponentInChildren<MeshRenderer>().material;
+		lookedAtObj.GetComponentInChildren<MeshRenderer>().material = outlineMaterial;
         
+        
+    }
+    private void RemoveObjectOutline(GameObject objectToRemoveOutlineMaterial){
+        // lookedAtObj = objectToRemoveOutlineMaterial;
+        lookedAtObj.GetComponentInChildren<MeshRenderer>().material = lookedAtObjMaterial;
     }
 }

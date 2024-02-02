@@ -11,8 +11,8 @@ public class dadMovementScript : MonoBehaviour
 
     public Transform orientation;
 
-    float xRotation = 0;
-    float yRotation = 0;
+    float xRotation;
+    float yRotation;
 
     private Vector3 babyPos;
 
@@ -26,7 +26,7 @@ public class dadMovementScript : MonoBehaviour
 
         GetBabyPos();
         transform.LookAt(babyPos);
-
+        orientation.rotation *= Quaternion.FromToRotation(Vector3.left, Vector3.forward);
 
     }
 
